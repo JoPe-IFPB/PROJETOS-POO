@@ -1,6 +1,7 @@
  import java.util.Scanner;
  class Semestrando{
-	
+protected int tamanho;
+protected int tamanha;
 protected String professore;
 protected String Alunoe;
 protected String Disciplinae;
@@ -83,7 +84,7 @@ public void apagaTudo(){
 class Estudante extends Semestrando{
 	Scanner T = new Scanner(System.in);
 public void insertStudenteDates(){
-	System.out.print("Nome do aluno: ");
+	System.out.print("Nome do aluno_____________________________________: ");
 	String Alunoe = T.nextLine();
 	setAlunoe(Alunoe);
 	System.out.println();
@@ -98,40 +99,40 @@ public void showStudentDates(){
 class Disciplinando extends Semestrando{
 	Scanner T = new Scanner(System.in);
 public void insertProfeDates(){
-	System.out.print("Professor:");
+	System.out.print("Professor(a)______________________________________:");
 	String professore = T.nextLine();
 	setProfessore(professore);
 	}
 public void showProfeDates(){
-	System.out.println("Nome do professor....................: "+this.professore);
-	System.out.println("Disciplina do professor..............: "+this.Disciplinae);
+	System.out.println("Nome do(a) professor(a)....................: "+this.professore);
+	System.out.println("Disciplina do(a) professor(a)..............: "+this.Disciplinae);
 	                                       System.out.println();
 	}
 public void insertDisciplinDates(){
-	System.out.print("Disciplina: ");
+	System.out.print("Disciplina________________________________________: ");
 	String Disciplinae = T.nextLine();
 	setDisciplinae(Disciplinae);
 	System.out.println();
-	System.out.print("Primeira nota da disciplina: ");
+	System.out.print("Primeira nota da disciplina (em inteiro)__________: ");
 	int nte1 = T.nextInt();
 	while(nte1 > 10){
-		System.out.print("Nota invalida, digite novamente primeira nota:");
+		System.out.print("Nota invalida, digite novamente primeira nota (em inteiro):");
 		nte1 = T.nextInt();
 		}
 	setNte1(nte1);
 	T.nextLine();
-	System.out.print("Segunda nota da disciplina:  ");
+	System.out.print("Segunda nota da disciplina (em inteiro)___________:  ");
 	int nte2 = T.nextInt();
 	while(nte2 > 10){
-		System.out.print("Nota invalida, digite novamente segunda nota:");
+		System.out.print("Nota invalida, digite novamente segunda nota (em inteiro):");
 		nte2 = T.nextInt();
 		}
 	setNte2(nte2);
 	T.nextLine();
-	System.out.print("Terceira nota da disciplina: ");
+	System.out.print("Terceira nota da disciplina (em inteiro)___________: ");
 	int nte3 = T.nextInt();
 	while(nte3 > 10){
-		System.out.print("Nota invalida, digite novamente terceira nota:");
+		System.out.print("Nota invalida, digite novamente terceira nota (em inteiro):");
 		nte3 = T.nextInt();
 		}
 	setNte3(nte3);
@@ -223,7 +224,6 @@ public class Matrizado {
 		System.out.println("Quantidade de alunos:");
 		int tam = T.nextInt();
 		T.nextLine();
-		
 		System.out.println("Quantidade de disciplinas por aluno:");
 		int tem = T.nextInt();
 		T.nextLine();
@@ -248,19 +248,28 @@ public class Matrizado {
 		          desc[j].insertDisciplinDates();
 	}
 	}
+		String epc;
 		
-	System.out.print("Digite seu nome:  ");
+			System.out.println("Alunos do curso:");
+			for(int i=0; i<est.length;i++){
+				System.out.println((i+1)+" - "+est[i].getAlunoe());
+				}
+	System.out.print("Digite seu nome (nao existindo retorna vazio):  ");
 	String nomisc = T.nextLine();
 	
 	 for(int i=0;i<est.length;i++){
 		 if(nomisc.equals(est[i].getAlunoe())){ 
-	System.out.println("************* BEM-VINDO   "+est[i].getAlunoe()+"!!!!!!");
+	System.out.println("*********************** BEM-VINDO   "+est[i].getAlunoe()+"!!!!!!");
+	do{
 	System.out.println("Disciplinas disponiveis para "+est[i].getAlunoe()+" :");
+	
+		System.out.println();
 	   for(int j=0; j<desc.length;j++){
 			System.out.println((j+1)+" - "+desc[j].getDisciplinae());
 		}
 		System.out.println("Escolha uma disciplina acima:");
 	String descipla = T.nextLine();
+	
 	
 		for(int j =0; j< desc.length;j++){
 			
@@ -273,30 +282,14 @@ public class Matrizado {
 		desc[j].showDisciplinDates();
 	                 } 
 				 }
+				 System.out.print("Continuar pesquisa? (s/n).............: ");
+				 epc = T.nextLine();
+				 System.out.println();
+				 }while(epc.equalsIgnoreCase("s"));
             }
 		}
-	/*	
-		System.out.println("Digite posicao do aluno a apagar ficha:");
-		int n = T.nextInt();
-		T.nextLine();
-		for (int i=0;i<est.length;i++){
-	est[(n-1)].apagaTudo();
 		
-		}
-		
-		System.out.println("Resultado apos apagar tudo:");
-		 for(int i=0;i<est.length;i++){
-	System.out.println("************* BEM-VINDO   "+est[i].getAlunoe()+"!!!!!!");
-	est[i].showStudentDates();
-		for(int j =0; j< desc.length;j++){
-		desc[j].relendoTabl();
-		desc[j].escrevendoTabl();
-		desc[j].showProfeDates();
-		desc[j].showDisciplinDates();
-	                 } 
-            }
-            */
-              System.out.println("----------------Fim da Consulta--------------------");
+System.out.println("----------------------------Fim da Consulta----------------------------");
 		T.close();
 	}
 }	
